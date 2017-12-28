@@ -29,7 +29,7 @@ namespace prac62
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<CourseContext>(
-                opt => opt.UseNpgsql("User ID=postgres;Password=a8574fd872;Host=localhost;Port=5432;Database=CL;Pooling=true;")
+                opt => opt.UseNpgsql("User ID=postgres;Password=a8574fd872;Host=localhost;Port=5432;Database=CL3;Pooling=true;")
             );
             services.AddMvc();
         }

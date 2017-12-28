@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace prac62.Migrations
 {
-    public partial class CLInit : Migration
+    public partial class CLINIT : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

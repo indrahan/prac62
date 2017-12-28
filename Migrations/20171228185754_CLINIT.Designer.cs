@@ -11,8 +11,8 @@ using System;
 namespace prac62.Migrations
 {
     [DbContext(typeof(CourseContext))]
-    [Migration("20171228151727_CLInit")]
-    partial class CLInit
+    [Migration("20171228185754_CLINIT")]
+    partial class CLINIT
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

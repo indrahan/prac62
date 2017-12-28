@@ -54,8 +54,25 @@ namespace prac62.Controllers
 }
 
                 };
+                Course c3 = new Course
+                {
+                    CourseCode = "INFSKI02A",
+                    Subject = "Skills",
+                    Lectures = new List<Lecture>{
+                        new Lecture { LectureCode = "Solliciteren",
+                        Teacher = "Wendy Klein" },
+                        new Lecture { LectureCode = "Conflicthantering",
+                        Teacher = "Wendy Klein" },
+                        new Lecture { LectureCode = "Engels",
+                        Teacher = "Wendy Klein" },
+                        new Lecture { LectureCode = "Wie ben ik?",
+                        Teacher = "Wendy Klein" }
+}
+
+                };
                 _context.Courses.Add(c);
                 _context.Courses.Add(c2);
+                _context.Courses.Add(c3);
                 _context.SaveChanges();
             }
         }

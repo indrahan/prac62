@@ -22,7 +22,7 @@ export class CoursesManager extends React.Component<RouteComponentProps<{}>, { c
     }
     public render() {
         if (this.state.courses == "loading") return <div>Loading...</div>
-        return <div className="courses">
+        return <div className="courses" >
             
             
             {this.state.courses.map(c => <div className="courses-course">
