@@ -3,6 +3,8 @@ import { RouteComponentProps } from 'react-router';
 import { Route, NavLink, Link } from 'react-router-dom'
 import * as Models from "../Models"
 import { Lecture } from "./Lecture"
+import { Button } from 'react-bootstrap';
+
 
 async function loadCourse(id: number): Promise<Models.Course> {
     let res = await fetch(`./Courses/GetCourse/${id}`, { method: 'get', credentials: 'include', headers: { 'content-type': 'application/json' } })
@@ -35,13 +37,15 @@ export class Course extends React.Component<{ preview: boolean, course: Models.C
         }
         else {
             return <div>
-                <div> Course code: {this.props.course.courseCode} </div>
-                <div> Course subject: {this.props.course.subject} </div>
+                <div> <h4><strong>Course code:</strong></h4> {this.props.course.courseCode} </div>
+                <div> <h4><strong>Course subject:</strong></h4> {this.props.course.subject} </div>
                 <div className="course-lectures">
+                    <div><h4><strong>Lectures: </strong></h4></div>
                     {this.props.course.lectures.map(l => <div className="course-lectures-lecture">
                         <Lecture lecture={l} preview={true} />
+
                         <Link to={"/lecture/false/" + l.id}>
-                            <button>Expand lecture</button>
+                            <Button bsStyle="success" bsSize="xsmall">Expand lecture</Button>
                         </Link>
                     </div>)}
                 </div>

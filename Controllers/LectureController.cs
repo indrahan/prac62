@@ -24,7 +24,7 @@ namespace prac62.Controllers
             return _context.Lectures.ToArray();
 
         }
-        [HttpGet("GetActor/{id}")]
+        [HttpGet("GetLecture/{id}")]
         public IActionResult GetActor(int id)
         {
             var lectures = from l in _context.Lectures

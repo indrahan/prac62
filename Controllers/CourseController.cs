@@ -25,14 +25,14 @@ namespace prac62.Controllers
                     CourseCode = "INFANL02-6",
                     Subject = "Analyse",
                     Lectures = new List<Lecture>{
-                        new Lecture { LectureCode = "INFANL02-Toolsupport",
+                        new Lecture { LectureCode = "Toolsupport",
+                        Teacher = "Indra Han" },
+                        new Lecture { LectureCode = "Unit testing",
                         Teacher = "Hossein Chamani" },
-                        new Lecture { LectureCode = "INFANL02-Unit_testing",
-                        Teacher = "Hossein Chamani" },
-                        new Lecture { LectureCode = "INFANL02-Data_combinatie_Test",
-                        Teacher = "Hossein Chamani" },
-                        new Lecture { LectureCode = "INFANL02-Elementaire_vergelijkingstest",
-                        Teacher = "Hossein Chamani" }
+                        new Lecture { LectureCode = "Data combinatie test",
+                        Teacher = "Greg Kartiko" },
+                        new Lecture { LectureCode = "Elementary comparison test",
+                        Teacher = "Stijn Kaman" }
 }
 
                 };
@@ -41,13 +41,15 @@ namespace prac62.Controllers
                     CourseCode = "INFDEV02-6",
                     Subject = "Development",
                     Lectures = new List<Lecture>{
-                        new Lecture { LectureCode = "INFDEV02-Algorithms",
+                        new Lecture { LectureCode = "Intro, array, complexity",
                         Teacher = "Omar Ahmad" },
-                        new Lecture { LectureCode = "INFDEV02-Binary_search",
-                        Teacher = "Omar Ahmad" },
-                        new Lecture { LectureCode = "INFDEV02-Insertion_sort",
-                        Teacher = "Omar Ahmad" },
-                        new Lecture { LectureCode = "INFDEV02-Merge_sort",
+                        new Lecture { LectureCode = "Sorting algorithms",
+                        Teacher = "Barry Allen" },
+                        new Lecture { LectureCode = "List, stack, queue",
+                        Teacher = "Iris Wells" },
+                        new Lecture { LectureCode = "Hash tables",
+                        Teacher = "Tom Stone" },
+                        new Lecture { LectureCode = "Binary Trees",
                         Teacher = "Omar Ahmad" }
 }
 
@@ -63,7 +65,7 @@ namespace prac62.Controllers
         public Course[] GetAll()
         {
             var courses = from c in _context.Courses
-                          let lectures = _context.Lectures.Where(l => l.CourseId == l.Id)
+                          let lectures = _context.Lectures.Where(l => l.CourseId == c.Id)
                           select new Course() { Id = c.Id, Lectures = lectures.ToList(), CourseCode = c.CourseCode, Subject = c.Subject };
             return courses.ToArray();
         }
@@ -72,7 +74,7 @@ namespace prac62.Controllers
         {
             var courses = from c in _context.Courses
                           where c.Id == id
-                          let lectures = _context.Lectures.Where(l => l.CourseId == l.Id)
+                          let lectures = _context.Lectures.Where(l => l.CourseId == c.Id)
                           select new Course() { Id = c.Id, Lectures = lectures.ToList(), CourseCode = c.CourseCode, Subject = c.Subject };
             var course = courses.FirstOrDefault();
             if (course == null) return NotFound();

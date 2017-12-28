@@ -2,6 +2,7 @@ import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 import { Route, NavLink } from 'react-router-dom'
 import * as Models from "../Models"
+import { Button } from 'react-bootstrap';
 
 
 async function loadActor(id: number): Promise<Models.Lecture> {
@@ -37,7 +38,14 @@ export class Lecture extends React.Component<{ preview: boolean, lecture: Models
         }
         else {
             return <div>
-                <div> Lecture Code: {this.props.lecture.lectureCode} </div>
+                <div>
+                    <h4><strong>Lecture topic:</strong></h4>
+                    {this.props.lecture.lectureCode} </div>
+                <div>
+                    <h4><strong>Teacher:</strong></h4>
+                    {this.props.lecture.teacher}
+                </div>
+
             </div>
         }
     }

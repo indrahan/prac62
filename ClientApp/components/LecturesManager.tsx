@@ -3,6 +3,7 @@ import { RouteComponentProps } from 'react-router';
 import { Route, NavLink, Link } from 'react-router-dom'
 import * as Models from "../Models"
 import { Lecture } from "./Lecture"
+import { Button } from 'react-bootstrap';
 
 async function loadLectures(): Promise<Models.Lecture[]> {
     let res = await fetch('./Lectures/GetAll', { method: 'get', credentials: 'include', headers: { 'content-type': 'application/json' } })
@@ -24,7 +25,7 @@ export class LecturesManager extends React.Component<RouteComponentProps<{}>, { 
             {this.state.lectures.map(l => <div className="lectures-lecture">
                 {<Lecture lecture={l} preview={true} />}
                 <Link to={"/lecture/false/" + l.id}>
-                    <button>Expand lecture</button>
+                <Button bsStyle="success" bsSize="xsmall">Expand lecture</Button>
                 </Link>
             </div>)}
         </div>
