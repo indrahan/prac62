@@ -12,7 +12,7 @@ export class NavMenu extends React.Component<{}, {}> {
                         <span className='icon-bar'></span>
                         <span className='icon-bar'></span>
                     </button>
-                    <Link className='navbar-brand' to={ '/' }>prac62</Link>
+                    <Link className='navbar-brand' to={ '/' }>Courses and lectures</Link>
                 </div>
                 <div className='clearfix'></div>
                 <div className='navbar-collapse collapse'>
@@ -23,23 +23,13 @@ export class NavMenu extends React.Component<{}, {}> {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={ '/counter' } activeClassName='active'>
-                                <span className='glyphicon glyphicon-education'></span> Counter
+                            <NavLink to={ '/coursesmanager' } activeClassName='active'>
+                                <span className='glyphicon glyphicon-th-list'></span> Courses
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={ '/fetchdata' } activeClassName='active'>
-                                <span className='glyphicon glyphicon-th-list'></span> Fetch data
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink to={ '/moviesmanager' } activeClassName='active'>
-                                <span className='glyphicon glyphicon-th-list'></span> Movies
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink to={ '/actorsmanager' } activeClassName='active'>
-                                <span className='glyphicon glyphicon-th-list'></span> Actors
+                            <NavLink to={ '/lecturesmanager' } activeClassName='active'>
+                                <span className='glyphicon glyphicon-th-list'></span> Lectures
                             </NavLink>
                         </li>
                     </ul>

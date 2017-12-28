@@ -28,8 +28,8 @@ namespace prac62
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<MovieContext>(
-                opt => opt.UseNpgsql("User ID=postgres;Password=a8574fd872;Host=localhost;Port=5432;Database=MovieDBP2;Pooling=true;")
+            services.AddDbContext<CourseContext>(
+                opt => opt.UseNpgsql("User ID=postgres;Password=a8574fd872;Host=localhost;Port=5432;Database=CL;Pooling=true;")
             );
             services.AddMvc();
         }

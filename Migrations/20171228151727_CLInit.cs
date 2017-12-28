@@ -5,59 +5,58 @@ using System.Collections.Generic;
 
 namespace prac62.Migrations
 {
-    public partial class InitReact : Migration
+    public partial class CLInit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Movies",
+                name: "Courses",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int4", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    Release = table.Column<DateTime>(type: "timestamp", nullable: false),
-                    Title = table.Column<string>(type: "text", nullable: true)
+                    CourseCode = table.Column<string>(type: "text", nullable: true),
+                    Subject = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Movies", x => x.Id);
+                    table.PrimaryKey("PK_Courses", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Actors",
+                name: "Lectures",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int4", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    Birth = table.Column<DateTime>(type: "timestamp", nullable: false),
-                    Gender = table.Column<string>(type: "text", nullable: true),
-                    MovieId = table.Column<int>(type: "int4", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: true)
+                    CourseId = table.Column<int>(type: "int4", nullable: false),
+                    LectureCode = table.Column<string>(type: "text", nullable: true),
+                    Teacher = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Actors", x => x.Id);
+                    table.PrimaryKey("PK_Lectures", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Actors_Movies_MovieId",
-                        column: x => x.MovieId,
-                        principalTable: "Movies",
+                        name: "FK_Lectures_Courses_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Courses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Actors_MovieId",
-                table: "Actors",
-                column: "MovieId");
+                name: "IX_Lectures_CourseId",
+                table: "Lectures",
+                column: "CourseId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Actors");
+                name: "Lectures");
 
             migrationBuilder.DropTable(
-                name: "Movies");
+                name: "Courses");
         }
     }
 }

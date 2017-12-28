@@ -1,12 +1,12 @@
-export type Movie ={
+export type Course ={
     id:number,
-    title:string,
-    genre:string,
-    actors:Actor[]
+    courseCode:string,
+    subject:string,
+    lectures:Lecture[]
 }
 
-export type Actor ={
+export type Lecture ={
     id:number,
-    name:string,
-    surname:string
+    teacher:string,
+    lectureCode:string
 }

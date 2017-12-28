@@ -10,9 +10,9 @@ using System;
 
 namespace prac62.Migrations
 {
-    [DbContext(typeof(MovieContext))]
-    [Migration("20171027112839_InitReact")]
-    partial class InitReact
+    [DbContext(typeof(CourseContext))]
+    [Migration("20171228151727_CLInit")]
+    partial class CLInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,45 +21,43 @@ namespace prac62.Migrations
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452");
 
-            modelBuilder.Entity("prac62.Models.Actor", b =>
+            modelBuilder.Entity("prac62.Models.Course", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("Birth");
+                    b.Property<string>("CourseCode");
 
-                    b.Property<string>("Gender");
-
-                    b.Property<int>("MovieId");
-
-                    b.Property<string>("Name");
+                    b.Property<string>("Subject");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MovieId");
-
-                    b.ToTable("Actors");
+                    b.ToTable("Courses");
                 });
 
-            modelBuilder.Entity("prac62.Models.Movie", b =>
+            modelBuilder.Entity("prac62.Models.Lecture", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("Release");
+                    b.Property<int>("CourseId");
 
-                    b.Property<string>("Title");
+                    b.Property<string>("LectureCode");
+
+                    b.Property<string>("Teacher");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Movies");
+                    b.HasIndex("CourseId");
+
+                    b.ToTable("Lectures");
                 });
 
-            modelBuilder.Entity("prac62.Models.Actor", b =>
+            modelBuilder.Entity("prac62.Models.Lecture", b =>
                 {
-                    b.HasOne("prac62.Models.Movie", "Movie")
-                        .WithMany("Actors")
-                        .HasForeignKey("MovieId")
+                    b.HasOne("prac62.Models.Course", "Course")
+                        .WithMany("Lectures")
+                        .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

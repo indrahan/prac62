@@ -6,35 +6,35 @@ using System.IO;
 
 namespace prac62.Models
 {
-    public class MovieContext : DbContext
+    public class CourseContext : DbContext
     {
-        public DbSet<Movie> Movies { get; set; }
-        public DbSet<Actor> Actors { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Lecture> Lectures { get; set; }
         //added constructor to provide the connection to the database as a service 
-        public MovieContext(DbContextOptions<MovieContext> options) : base(options)
+        public CourseContext(DbContextOptions<CourseContext> options) : base(options)
         {
 
         }
 
 
     }
-    public class Movie
+    public class Course
     {
         
 
         public int Id { get; set; }
-        public string Title { get; set; }
-        public DateTime Release { get; set; }
-        public List<Actor> Actors { get; set; }
+        public string CourseCode { get; set; }
+        public string Subject { get; set; }
+        public List<Lecture> Lectures { get; set; }
     }
-    public class Actor
+    public class Lecture
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public DateTime Birth { get; set; }
-        public string Gender { get; set; }
-        public int MovieId { get; set; }
-        public Movie Movie { get; set; }
+        public string LectureCode { get; set; }
+
+        public string Teacher { get; set; }
+        public int CourseId { get; set; }
+        public Course Course { get; set; }
     }
     public class MyLoggerProvider : ILoggerProvider
     {
